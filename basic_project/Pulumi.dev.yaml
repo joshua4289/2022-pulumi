@@ -1,0 +1,3 @@
+config:
+  gcp:project: first-project-fastapi
+

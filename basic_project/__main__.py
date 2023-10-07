@@ -11,7 +11,7 @@ def main() -> None:
         "my-bucket",
         website=storage.BucketWebsiteArgs(main_page_suffix="index.html"),
         uniform_bucket_level_access=True,
-        location="US",
+        location="UK",
         force_destroy=True,
     )
 
