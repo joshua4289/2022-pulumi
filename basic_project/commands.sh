@@ -10,3 +10,7 @@ gcloud projects create first-project-fastapi
 gcloud config get project
 # login setup for pulumi
 gcloud default application_login
+#create stack using Pulumi
+pulumi up
+#destroy stack using pulumi
+pulumi destroy -s joshua4289/project/first-project-fastapi

@@ -7,6 +7,9 @@ from pulumi_gcp import storage
 def main() -> None:
 
     # Create a GCP resource (Storage Bucket)
+    # we need to first set the "billing account"
+    # using https://console.cloud.google.com/billing/projects
+
     bucket = storage.Bucket(
         "my-bucket",
         website=storage.BucketWebsiteArgs(main_page_suffix="index.html"),
