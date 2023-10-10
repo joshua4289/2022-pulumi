@@ -3,6 +3,15 @@ import time
 
 import pulumi
 from pulumi_gcp import cloudfunctions, storage
+"""
+This script shows how to 
+1.zip up source code into an Asset and
+2.put the Asset into an Archive . 
+3. Store the Archive in a bucket 
+4. Create a cloud function using the assets in the bucket 
+5 . Add a role for the cloud function 
+6 export the url 
+"""
 
 # Disable rule for that module-level exports be ALL_CAPS, for legibility.
 # pylint: disable=C0103
@@ -18,7 +27,9 @@ bucket = storage.Bucket("cf_demo_bucket", location="US", force_destroy=True)
 assets = {}
 for file in os.listdir(PATH_TO_SOURCE_CODE):
     location = os.path.join(PATH_TO_SOURCE_CODE, file)
+    # this is a special pulumi construct , CDK has FileAsset as well
     asset = pulumi.FileAsset(path=location)
+
     assets[file] = asset
 
 archive = pulumi.AssetArchive(assets=assets)
